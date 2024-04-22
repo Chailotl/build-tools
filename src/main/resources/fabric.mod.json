@@ -28,6 +28,9 @@
 	"entrypoints": {
 		"main": [
 			"com.chailotl.build_tools.Main"
+		],
+		"client": [
+			"com.chailotl.build_tools.Main"
 		]
 	},
 	"accessWidener": "build_tools.accesswidener",

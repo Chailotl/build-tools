@@ -1,5 +1,6 @@
 package com.chailotl.build_tools;
 
+import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -18,7 +19,7 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Main implements ModInitializer
+public class Main implements ModInitializer, ClientModInitializer
 {
 	public static final String MOD_ID = "build_tools";
    public static final Logger LOGGER = LoggerFactory.getLogger("build_tools");
@@ -48,11 +49,16 @@ public class Main implements ModInitializer
 
 		// Blocks
 		Registry.register(Registries.BLOCK, new Identifier(MOD_ID, "cloud"), CLOUD_BLOCK);
-		BlockRenderLayerMap.INSTANCE.putBlock(CLOUD_BLOCK, RenderLayer.getTranslucent());
 
 		ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(content -> {
 			content.addAfter(Items.BRUSH, WRENCH, TROWEL);
 			content.addAfter(Items.POWDER_SNOW_BUCKET, CLOUD_BUCKET);
 		});
+	}
+
+	@Override
+	public void onInitializeClient()
+	{
+		BlockRenderLayerMap.INSTANCE.putBlock(CLOUD_BLOCK, RenderLayer.getTranslucent());
 	}
 }
