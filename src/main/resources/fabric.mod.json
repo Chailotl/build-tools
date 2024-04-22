@@ -30,9 +30,6 @@
 			"com.chailotl.build_tools.Main"
 		]
 	},
-	"mixins": [
-		"build_tools.mixins.json"
-	],
 	"accessWidener": "build_tools.accesswidener",
 	"depends": {
 		"fabricloader": ">=0.15.7",
