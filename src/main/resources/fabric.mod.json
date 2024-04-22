@@ -1,0 +1,43 @@
+{
+	"schemaVersion": 1,
+	"id": "build_tools",
+	"version": "${version}",
+	"name": "Chai's Build Tools",
+	"description": "A set of tools that are useful for building, including a wrench, trowel, and a cloud bucket",
+	"authors": [
+		"Chai"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/chais-build_tools/",
+		"sources": "https://github.com/chailotl/build_tools",
+		"issues": "https://github.com/chailotl/build_tools/issues"
+	},
+	"custom": {
+		"modmenu": {
+			"links": {
+				"modmenu.discord": "https://discord.gg/SuZb3aJUCx"
+			}
+		}
+	},
+	"license": "LGPL-3.0",
+	"icon": "assets/build_tools/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.chailotl.build_tools.Main"
+		]
+	},
+	"mixins": [
+		"build_tools.mixins.json"
+	],
+	"accessWidener": "build_tools.accesswidener",
+	"depends": {
+		"fabricloader": ">=0.15.7",
+		"minecraft": "~1.20",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

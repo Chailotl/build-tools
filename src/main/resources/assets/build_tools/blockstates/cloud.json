@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "build_tools:block/cloud"
+		}
+	}
+}

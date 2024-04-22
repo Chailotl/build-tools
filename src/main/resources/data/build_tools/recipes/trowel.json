@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		" c",
+		"s "
+	],
+	"key": {
+		"s": {
+			"item": "minecraft:stick"
+		},
+		"c": {
+			"item": "minecraft:copper_ingot"
+		}
+	},
+	"result": {
+		"item": "build_tools:trowel"
+	}
+}

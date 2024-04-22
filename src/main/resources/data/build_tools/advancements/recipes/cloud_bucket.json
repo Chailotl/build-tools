@@ -1,0 +1,27 @@
+{
+	"parent": "minecraft:recipes/root",
+	"criteria": {
+		"has_bucket": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:bucket"
+						]
+					}
+				]
+			}
+		}
+	},
+	"requirements": [
+		[
+			"has_bucket"
+		]
+	],
+	"rewards": {
+		"recipes": [
+			"build_tools:cloud_bucket"
+		]
+	}
+}

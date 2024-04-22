@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"gg",
+		"gc",
+		" c"
+	],
+	"key": {
+		"c": {
+			"item": "minecraft:copper_ingot"
+		},
+		"g": {
+			"item": "minecraft:gold_ingot"
+		}
+	},
+	"result": {
+		"item": "build_tools:wrench"
+	}
+}
