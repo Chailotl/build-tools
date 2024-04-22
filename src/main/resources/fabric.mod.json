@@ -7,6 +7,9 @@
 	"authors": [
 		"Chai"
 	],
+	"contributors": [
+		"Applebax"
+	],
 	"contact": {
 		"homepage": "https://modrinth.com/mod/chais-build_tools/",
 		"sources": "https://github.com/chailotl/build_tools",
