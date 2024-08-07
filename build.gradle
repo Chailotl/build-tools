@@ -1,6 +1,7 @@
 plugins {
-	id 'fabric-loom' version '1.6-SNAPSHOT'
+	id 'fabric-loom' version '1.7-SNAPSHOT'
 	id 'maven-publish'
+	id "me.modmuss50.mod-publish-plugin" version "0.6.3"
 }
 
 version = project.mod_version
@@ -35,14 +36,16 @@ dependencies {
 
 processResources {
 	inputs.property "version", project.version
+	inputs.property "name", project.mod_name
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand "version": project.version,
+				"name": project.mod_name
 	}
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 17
+	it.options.release = 21
 }
 
 java {
@@ -51,8 +54,8 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 jar {
@@ -75,5 +78,27 @@ publishing {
 		// Notice: This block does NOT have the same function as the block in the top level.
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
+	}
+}
+
+if (project.gradle.getProperties().get("modrinth_token") != null) {
+	publishMods {
+		File changelogFile = new File("CHANGELOG.md")
+
+		file = remapJar.archiveFile
+		changelog = changelogFile.exists() ? changelogFile.text : ""
+		type = STABLE
+		displayName = "${project.mod_name} ${project.mod_version}"
+		modLoaders.add("fabric")
+
+		modrinth {
+			accessToken = providers.gradleProperty("modrinth_token").get()
+			projectId = "swsFw76C"
+			minecraftVersionRange {
+				start = "1.21"
+				end = "1.21"
+			}
+			requires("fabric-api")
+		}
 	}
 }

@@ -6,5 +6,7 @@
 	"ingredient": {
 		"item": "minecraft:powder_snow_bucket"
 	},
-	"result": "build_tools:cloud_bucket"
+	"result": {
+		"id":  "build_tools:cloud_bucket"
+	}
 }

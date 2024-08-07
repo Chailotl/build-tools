@@ -1,6 +1,8 @@
 package com.chailotl.build_tools;
 
+import com.mojang.serialization.MapCodec;
 import net.minecraft.block.*;
+import net.minecraft.block.entity.BeehiveBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
@@ -20,6 +22,12 @@ public class CloudBlock extends BlockWithEntity implements BlockEntityProvider
 		super(settings.noCollision().sounds(BlockSoundGroup.POWDER_SNOW).nonOpaque().allowsSpawning(CloudBlock::never).solidBlock(CloudBlock::never).suffocates(CloudBlock::never).blockVision(CloudBlock::never));
 	}
 
+	@Override
+	protected MapCodec<? extends BlockWithEntity> getCodec()
+	{
+		return null;
+	}
+
 	private static boolean never(BlockState blockState, BlockView blockView, BlockPos blockPos)
 	{
 		return false;
@@ -33,7 +41,7 @@ public class CloudBlock extends BlockWithEntity implements BlockEntityProvider
 	// Transparent block stuff
 	public boolean isSideInvisible(BlockState state, BlockState stateFrom, Direction direction)
 	{
-		return stateFrom.isOf(this) ? true : super.isSideInvisible(state, stateFrom, direction);
+		return stateFrom.isOf(this) || super.isSideInvisible(state, stateFrom, direction);
 	}
 
 	public VoxelShape getCameraCollisionShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context)
@@ -67,6 +75,6 @@ public class CloudBlock extends BlockWithEntity implements BlockEntityProvider
 	@Override
 	public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type)
 	{
-		return checkType(type, Main.CLOUD_BLOCK_ENTITY, (world1, pos, state1, be) -> CloudBlockEntity.tick(world1, pos, state1, be));
+		return world.isClient ? null : validateTicker(type, Main.CLOUD_BLOCK_ENTITY, CloudBlockEntity::tick);
 	}
 }

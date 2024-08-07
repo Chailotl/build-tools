@@ -111,15 +111,15 @@ public class WrenchItem extends Item
 				newState = newState.with(Properties.ATTACHMENT, attachment);
 			}
 
-			if (state.contains(Properties.WALL_MOUNT_LOCATION) && state.get(Properties.HORIZONTAL_FACING) == Direction.WEST)
+			if (state.contains(Properties.BLOCK_FACE) && state.get(Properties.HORIZONTAL_FACING) == Direction.WEST)
 			{
-				WallMountLocation wallMountLocation = switch(state.get(Properties.WALL_MOUNT_LOCATION)) {
-					case FLOOR -> WallMountLocation.WALL;
-					case WALL -> WallMountLocation.CEILING;
-					case CEILING -> WallMountLocation.FLOOR;
+				BlockFace blockFace = switch(state.get(Properties.BLOCK_FACE)) {
+					case FLOOR -> BlockFace.WALL;
+					case WALL -> BlockFace.CEILING;
+					case CEILING -> BlockFace.FLOOR;
 				};
 
-				newState = newState.with(Properties.WALL_MOUNT_LOCATION, wallMountLocation);
+				newState = newState.with(Properties.BLOCK_FACE, blockFace);
 			}
 		}
 		else if (state.contains(Properties.STRAIGHT_RAIL_SHAPE))

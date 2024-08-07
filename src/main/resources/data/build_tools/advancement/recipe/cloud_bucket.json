@@ -12,11 +12,24 @@
 					}
 				]
 			}
+		},
+		"has_powder_snow_bucket": {
+			"trigger": "minecraft:inventory_changed",
+			"conditions": {
+				"items": [
+					{
+						"items": [
+							"minecraft:powder_snow_bucket"
+						]
+					}
+				]
+			}
 		}
 	},
 	"requirements": [
 		[
-			"has_bucket"
+			"has_bucket",
+			"has_powder_snow_bucket"
 		]
 	],
 	"rewards": {

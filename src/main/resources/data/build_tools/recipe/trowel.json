@@ -1,9 +1,5 @@
 {
 	"type": "minecraft:crafting_shaped",
-	"pattern": [
-		" c",
-		"s "
-	],
 	"key": {
 		"s": {
 			"item": "minecraft:stick"
@@ -12,7 +8,11 @@
 			"item": "minecraft:copper_ingot"
 		}
 	},
+	"pattern": [
+		" c",
+		"s "
+	],
 	"result": {
-		"item": "build_tools:trowel"
+		"id": "build_tools:trowel"
 	}
 }

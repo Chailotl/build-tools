@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "build_tools",
 	"version": "${version}",
-	"name": "Chai's Build Tools",
+	"name": "${name}",
 	"description": "A set of tools that are useful for building, including a wrench, trowel, and a cloud bucket",
 	"authors": [
 		"Chai"
@@ -35,12 +35,9 @@
 	},
 	"accessWidener": "build_tools.accesswidener",
 	"depends": {
-		"fabricloader": ">=0.15.7",
-		"minecraft": "~1.20",
-		"java": ">=17",
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
 		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
 	}
 }

@@ -1,6 +1,7 @@
 package com.chailotl.build_tools;
 
 import net.minecraft.block.Block;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -27,7 +28,7 @@ public class CloudBucketItem extends PowderSnowBucketItem
 	private ActionResult originalUseOnBlock(ItemUsageContext context)
 	{
 		ActionResult actionResult = this.place(new ItemPlacementContext(context));
-		if (!actionResult.isAccepted() && this.isFood())
+		if (!actionResult.isAccepted() && context.getStack().contains(DataComponentTypes.FOOD))
 		{
 			ActionResult actionResult2 = this.use(context.getWorld(), context.getPlayer(), context.getHand()).getResult();
 			return actionResult2 == ActionResult.CONSUME ? ActionResult.CONSUME_PARTIAL : actionResult2;

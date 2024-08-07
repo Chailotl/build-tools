@@ -52,7 +52,7 @@ public class TrowelItem extends Item
 		if (result.isAccepted())
 		{
 			Block block = ((BlockItem) stack.getItem()).getBlock();
-			BlockSoundGroup soundGroup = block.getSoundGroup(block.getDefaultState());
+			BlockSoundGroup soundGroup = block.getDefaultState().getSoundGroup();
 			world.playSound(null, context.getBlockPos(), soundGroup.getPlaceSound(), SoundCategory.BLOCKS, (soundGroup.getVolume() + 1.0F) / 2.0F, soundGroup.getPitch() * 0.8F);
 
 			if (!player.getAbilities().creativeMode)
