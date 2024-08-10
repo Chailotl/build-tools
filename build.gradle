@@ -81,7 +81,7 @@ publishing {
 	}
 }
 
-if (project.gradle.getProperties().get("modrinth_token") != null) {
+if (providers.gradleProperty("modrinth_token").getOrNull() != null) {
 	publishMods {
 		File changelogFile = new File("CHANGELOG.md")
 
